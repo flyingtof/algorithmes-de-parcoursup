@@ -52,7 +52,7 @@ import parcoursup.propositions.algo.VoeuUID;
     * chaque commission de classement internat des voeux par un C_GI_COD
 
     Plus de détails dans doc/implementation.txt
- */
+*/
 public class ConnecteurDonneesPropositionsOracle implements ConnecteurDonneesPropositions {
 
     /* connection a la base de donnees */
@@ -281,7 +281,7 @@ public class ConnecteurDonneesPropositionsOracle implements ConnecteurDonneesPro
                         + " FROM g_par WHERE g_pr_cod=35")) {
             result.next();
             int nb = result.getInt(1);
-            if (nb < 1 || nb > 150) {
+            if (nb < 1) {
                 throw new RuntimeException("Date incohérente");
             }
             GroupeInternat.nbJoursCampagne = nb;
