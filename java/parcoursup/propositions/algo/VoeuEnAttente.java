@@ -65,7 +65,7 @@ public class VoeuEnAttente {
         return internat == null ? null : internat.id;
     }
 
-    /* resultat du calcul: fait t'on une estAProposer sur ce voeu? */
+    /* resultat du calcul: fait t'on une proposition sur ce voeu? */
     private boolean aProposer = false;
 
     public boolean estAProposer() {
@@ -90,7 +90,7 @@ public class VoeuEnAttente {
     public boolean estDesactiveParPositionAdmissionInternat() {
         /* si le candidat demande l'internat mais que son classement
             a l'internat ne passe pas la barre définie par la position
-            d'admission, alors on en fait pas de estAProposer */
+            d'admission, alors on en fait pas de proposition */
         return ((internat != null)
                 && !internatDejaObtenu()
                 && rangInternat > internat.positionAdmission);

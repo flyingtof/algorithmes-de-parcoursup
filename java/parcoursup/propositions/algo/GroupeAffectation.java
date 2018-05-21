@@ -33,7 +33,7 @@ public class GroupeAffectation {
     public final int capacite;
 
     /* le rang limite des candidats (dans l'ordre d'appel): 
-    tous les candidats de rang inférieur reçoivent une estAProposer */
+    tous les candidats de rang inférieur reçoivent une proposition */
     public final int rangLimite;
 
     /* constructeur */

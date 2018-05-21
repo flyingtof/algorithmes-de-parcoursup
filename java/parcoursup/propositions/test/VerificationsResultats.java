@@ -19,7 +19,6 @@
  */
 package parcoursup.propositions.test;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -41,7 +40,7 @@ public class VerificationsResultats {
 
     Si un candidat C1 précède un candidat C2 dans l'ordre d'appel d'une formation F
     et si C1 a un voeu en attente pour F sans demande d'internat
-    alors C2 n'a pas de estAProposer pour F.
+    alors C2 n'a pas de proposition pour F.
      */
     public static void verifierRespectOrdreAppelVoeuxSansInternat(GroupeAffectation formation) {
         for (VoeuEnAttente v1 : formation.voeux) {
@@ -64,7 +63,7 @@ public class VerificationsResultats {
     à la fois dans l'ordre d'appel d'une formation F
     et dans un classement d'internat I
     et si C1 a un voeu en attente pour F avec internat I
-    alors C2 n'a pas de estAProposer pour F avec internat I.
+    alors C2 n'a pas de proposition pour F avec internat I.
      */
     public static void verifierVoeuxAvecInternat(GroupeAffectation formation) {
         for (VoeuEnAttente v1 : formation.voeux) {
@@ -85,10 +84,10 @@ public class VerificationsResultats {
     }
 
     /*
-    P3 (respect classement internat pour les candidats avec une estAProposer sans internat)
+    P3 (respect classement internat pour les candidats avec une proposition sans internat)
 
     Si un candidat C1 a un voeu en attente pour une formation F avec demande d'internat I
-    et une estAProposer acceptés ou en attente de réponse de sa part pour la formation F 
+    et une proposition acceptés ou en attente de réponse de sa part pour la formation F 
     sans demande d'internat,
     et si C2 est un candidat moins bien classé que C1 à l'internat I
     et si une des nouvelles propositions du jour offre l'internat I à C2
