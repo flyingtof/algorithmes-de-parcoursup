@@ -54,23 +54,26 @@ public class VoeuUID {
             }
             voeuxCrees.add(this);
         }
-        
+
     }
 
     @Override
     public boolean equals(Object obj) {
-        assert (obj != null) && (obj instanceof VoeuUID);
-        VoeuUID o = (VoeuUID) obj;
-        return (this.G_CN_COD == o.G_CN_COD 
-                && this.G_TA_COD == o.G_TA_COD 
-                && this.I_RH_COD == o.I_RH_COD);
+        if (obj instanceof VoeuUID) {
+            VoeuUID o = (VoeuUID) obj;
+            return (this.G_CN_COD == o.G_CN_COD
+                    && this.G_TA_COD == o.G_TA_COD
+                    && this.I_RH_COD == o.I_RH_COD);
+        } else {
+            throw new RuntimeException("Test d'égalité anormal");
+        }
     }
 
     @Override
     public int hashCode() {
-        return Long.hashCode( 
-                ((long) (this.I_RH_COD ? 1 : 0)) 
-                ^ (((long) G_CN_COD) << 1) 
+        return Long.hashCode(
+                ((long) (this.I_RH_COD ? 1 : 0))
+                ^ (((long) G_CN_COD) << 1)
                 ^ (((long) G_TA_COD) << 32)
         );
     }
@@ -83,5 +86,4 @@ public class VoeuUID {
     private static boolean verificationUnicite = false;
     private static final Set<VoeuUID> voeuxCrees = new HashSet<>();
 
-    
 }

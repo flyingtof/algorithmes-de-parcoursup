@@ -37,10 +37,13 @@ public class GroupeInternatUID {
 
     @Override
     public boolean equals(Object obj) {
-        assert (obj != null) && (obj instanceof GroupeInternatUID);
-        GroupeInternatUID ta = (GroupeInternatUID) obj;
-        return this.C_GI_COD == ta.C_GI_COD
-                && this.G_TA_COD == ta.G_TA_COD;
+        if (obj instanceof GroupeInternatUID) {
+            GroupeInternatUID ta = (GroupeInternatUID) obj;
+            return this.C_GI_COD == ta.C_GI_COD
+                    && this.G_TA_COD == ta.G_TA_COD;
+        } else {
+            throw new RuntimeException("Test d'égalité anormal");
+        }
     }
 
     @Override
@@ -49,5 +52,4 @@ public class GroupeInternatUID {
                 C_GI_COD ^ (G_TA_COD << 16));
     }
 
-    
 }
