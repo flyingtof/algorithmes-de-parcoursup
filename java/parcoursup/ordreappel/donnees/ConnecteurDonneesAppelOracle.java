@@ -58,22 +58,20 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
 
     /* chargement des classements depuis la base de donnéees */
     @Override
-    public AlgoOrdreAppelEntree recupererDonneesOrdreAppel() {
+    public AlgoOrdreAppelEntree recupererDonneesOrdreAppel() throws SQLException {
 
-        try {
+        Map<Integer, GroupeClassement> groupesClassements
+                = new HashMap<>();
 
-            Map<Integer, GroupeClassement> groupesClassements
-                    = new HashMap<>();
+        try (Statement stmt = conn.createStatement()) {
 
             /* récupère la liste des groupes et les taux minimum de boursiers 
             et de résidents depuis la base de données */
             log("Récupération des groupes");
-            Statement stmt = conn.createStatement();
             stmt.setFetchSize(1000000);
 
             String sql
-                    = 
-                    "SELECT DISTINCT "
+                    = "SELECT DISTINCT "
                     //groupe de classement
                     + "rg.C_GP_COD,"
                     //flag taux de bousier 0/null = non 1=oui
@@ -102,49 +100,49 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
                     + " AND   NVL(g.c_gp_flg_pas_cla, 0)!=1";
 
             log(sql);
-            
-            ResultSet result = stmt.executeQuery(sql);
 
-            while (result.next()) {
+            try (ResultSet result = stmt.executeQuery(sql)) {
 
-                int C_GP_COD = result.getInt(1);
+                while (result.next()) {
 
-                if (groupesClassements.containsKey(C_GP_COD)) {
-                    throw new RuntimeException("Groupe dupliqué " + C_GP_COD);
+                    int C_GP_COD = result.getInt(1);
+
+                    if (groupesClassements.containsKey(C_GP_COD)) {
+                        throw new RuntimeException("Groupe dupliqué " + C_GP_COD);
+                    }
+
+                    /* un ou deux taux selon le type de formation */
+                    boolean tauxBoursierDisponible = result.getBoolean(2);
+                    boolean tauxResDisponible = result.getBoolean(4);
+                    int tauxMinBoursier = tauxBoursierDisponible ? result.getInt(3) : 0;
+                    int tauxMaxNonResident = tauxResDisponible ? result.getInt(5) : 100;
+                    int tauxMinResident = 100 - tauxMaxNonResident;
+
+                    if (tauxMinBoursier < 0
+                            || tauxMinBoursier > 100
+                            || tauxMinResident < 0
+                            || tauxMinResident > 100) {
+                        throw new RuntimeException("Taux incohérents");
+                    }
+
+                    groupesClassements.put(C_GP_COD,
+                            new GroupeClassement(
+                                    C_GP_COD,
+                                    tauxMinBoursier,
+                                    tauxMinResident
+                            ));
+
                 }
-
-                /* un ou deux taux selon le type de formation */
-                boolean tauxBoursierDisponible = result.getBoolean(2);
-                boolean tauxResDisponible = result.getBoolean(4);
-                int tauxMinBoursier = tauxBoursierDisponible ? result.getInt(3) : 0;
-                int tauxMaxNonResident = tauxResDisponible ? result.getInt(5) : 100;
-                int tauxMinResident = 100 - tauxMaxNonResident;
-
-                if (tauxMinBoursier < 0
-                        || tauxMinBoursier > 100
-                        || tauxMinResident < 0
-                        || tauxMinResident > 100) {
-                    throw new RuntimeException("Taux incohérents");
-                }
-
-                groupesClassements.put(C_GP_COD,
-                        new GroupeClassement(
-                                C_GP_COD,
-                                tauxMinBoursier,
-                                tauxMinResident
-                        ));
-
             }
-            result.close();
-            stmt.close();
+        }
+        try (Statement stmt = conn.createStatement()) {
 
             Set<Integer> groupesManquants = new HashSet<>();
 
             /* récupère la liste des voeux depuis la base de données */
             log("Récupération des voeux");
-            stmt = conn.createStatement();
             stmt.setFetchSize(1000000);
-            sql = "SELECT "
+            String sql = "SELECT "
                     //id du groupe de classement
                     + "cg.C_GP_COD, "
                     //id du candidat
@@ -176,70 +174,71 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
                     //formation inscription
                     + " AND   ja.g_ti_cod=i.g_ti_cod"
                     //seulement les formations qui classent
-                    + " AND   NVL(gp.c_gp_flg_pas_cla, 0)!=1"
-                    ;
-            
+                    + " AND   NVL(gp.c_gp_flg_pas_cla, 0)!=1";
+
             log(sql);
 
-            result = stmt.executeQuery(sql);
+            try (ResultSet result = stmt.executeQuery(sql)) {
 
-            /* Remarque: le rang est à null / 0 pour celles desformations 
+                /* Remarque: le rang est à null / 0 pour celles desformations 
             non-sélectives qui ne réalisent pas de classement. */
-            while (result.next()) {
+                while (result.next()) {
 
-                int C_GP_COD = result.getInt(1);
-                int G_CN_COD = result.getInt(2);
-                int rang = result.getInt(3);
+                    int C_GP_COD = result.getInt(1);
+                    int G_CN_COD = result.getInt(2);
+                    int rang = result.getInt(3);
 
-                boolean estDeclareBoursierLycee = (result.getInt(4) == 1);
-                int confirmationBoursier = result.getInt(5);
-                boolean estConsidereBoursier
-                        = estDeclareBoursierLycee
-                        && (confirmationBoursier == 1 || confirmationBoursier == 2);
-                boolean estConsidereDuSecteur = result.getBoolean(6);
+                    boolean estDeclareBoursierLycee = (result.getInt(4) == 1);
+                    int confirmationBoursier = result.getInt(5);
+                    boolean estConsidereBoursier
+                            = estDeclareBoursierLycee
+                            && (confirmationBoursier == 1 || confirmationBoursier == 2);
+                    boolean estConsidereDuSecteur = result.getBoolean(6);
 
-                if (!groupesClassements.containsKey(C_GP_COD)) {
-                    //peut arriver si les classements ne sont pas encore remontés
-                    groupesManquants.add(C_GP_COD);
-                    continue;
+                    if (!groupesClassements.containsKey(C_GP_COD)) {
+                        //peut arriver si les classements ne sont pas encore remontés
+                        groupesManquants.add(C_GP_COD);
+                        continue;
+                    }
+
+                    GroupeClassement ga = groupesClassements.get(C_GP_COD);
+                    ga.ajouterVoeu(
+                            new VoeuClasse(
+                                    G_CN_COD,
+                                    rang,
+                                    estConsidereBoursier,
+                                    estConsidereDuSecteur)
+                    );
                 }
 
-                GroupeClassement ga = groupesClassements.get(C_GP_COD);
-                ga.ajouterVoeu(
-                        new VoeuClasse(
-                                G_CN_COD,
-                                rang,
-                                estConsidereBoursier,
-                                estConsidereDuSecteur)
-                );
-            }
+                result.close();
+                stmt.close();
 
-            result.close();
-            stmt.close();
-
-            if (!groupesManquants.isEmpty()) {
-                log(groupesManquants.size() + " groupes manquants.");
-                System.out.print("(");
-                for (int c_gp_cod : groupesManquants) {
-                    System.out.print(c_gp_cod + ",");
+                if (!groupesManquants.isEmpty()) {
+                    log(groupesManquants.size() + " groupes manquants.");
+                    System.out.print("(");
+                    for (int c_gp_cod : groupesManquants) {
+                        System.out.print(c_gp_cod + ",");
+                    }
+                    System.out.println(")");
+                    //throw new RuntimeException(groupesManquants.size() + " groupes manquants.");
                 }
-                System.out.println(")");
-                //throw new RuntimeException(groupesManquants.size() + " groupes manquants.");
+
+                AlgoOrdreAppelEntree entree = new AlgoOrdreAppelEntree();
+                entree.groupesClassements.addAll(groupesClassements.values());
+                return entree;
+
+            } catch (SQLException ex) {
+                throw new RuntimeException("Erreur de chargement des données", ex);
             }
 
-            AlgoOrdreAppelEntree entree = new AlgoOrdreAppelEntree();
-            entree.groupesClassements.addAll(groupesClassements.values());
-            return entree;
-
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erreur de chargement des données", ex);
         }
-
     }
 
     /* exportation des classements vers la base de donnéees */
     @Override
-    public void exporterDonneesOrdresAppel(AlgoOrdreAppelSortie donnees) {
+    public void exporterDonneesOrdresAppel(AlgoOrdreAppelSortie donnees
+    ) {
 
         try {
 
