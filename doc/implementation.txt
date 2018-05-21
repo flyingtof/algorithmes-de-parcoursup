@@ -3,7 +3,7 @@ Implémentation des algorithmes de Parcoursup
 
 
 
-Modèle: lien entre les classes Java et la base de donnée
+Modèle: lien entre les classes Java et la base de données
 _______________________________________________________
 
 La base identifie:
@@ -30,9 +30,9 @@ Le lien entre ces identifiants et les classes de l'algo sont
 Algorithme OrdreAppel:
 ______________________
 
-    Le point d'entrée (main) est dans "CalculOrdreAppel.java".
+    Le point d'entrée (main) est dans "java/parcoursup/ordreappel/CalculOrdreAppel.java".
 
-    Le calcul de l'ordre d'appel est effectué indépendamment dans chque groupe de classement.
+    Le calcul de l'ordre d'appel est effectué indépendamment dans chaque groupe de classement.
     Le code récupère les groupes de classement, puis les voeux et injecte les voeux
     dans les groupes de classement correspondant.
 
@@ -48,13 +48,13 @@ _____________________________
     Pour les formations avec internat, il faut en plus calculer la valeur de la
     position d'admission, comme spécifié dans le doc algos. Cette position d'admission,
     propre à chaque GroupeInternat, paramètre l'assiette des candidats éligibles
-    à une place dans cette internat. 
+    à une place dans cet internat. 
 
     Le calcul de la position d'admission réalise un 
     compromis entre plusieurs contraintes:
 
         * respecter les capacités des internats
-        * proposer les places à l'internat dans l'ordre du classement internat
+        * proposer les places d'internat dans l'ordre du classement internat
         * avoir des internats remplis en fin de campagne.
     
     Elle est inférieure à une position maximum

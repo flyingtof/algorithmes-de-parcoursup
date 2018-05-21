@@ -67,16 +67,16 @@ public class AlgoPropositions {
             à jour, il l'aurait été également après la mise-à-jour.
             (Mais la réciproque est fausse en général).
             
-            De cette manière, on reste bien dans l'ensemble E des vecteurs de position
+            De cette manière, on reste bien dans l'ensemble E des vecteurs de positions
             d'admission supérieurs sur chaque composante au vecteur de positions d'admission
             le plus permissif possible parmi tous ceux respectant les contraintes
-            de capacité des internats et situés sous les positions maximales
+            de capacité des internats et situés en deça des positions maximales
             d'admission.
             
-            Ce vecteur est égale, sur chaque composante, à la vaeu rminimum de cette
-            compsante parmi les éléments de E.
+            Ce vecteur est égal, sur chaque composante, à la valeur minimum de cette
+            compsoante parmi les éléments de E.
             
-            La boucle termine quand les contraintes de capacités des internats
+            La boucle termine quand les contraintes de capacité des internats
             sont satisfaites, c'est à dire quand ce minimum global est atteint.
             
             Une propriété de symétrie i.e. d'équité intéressante:
