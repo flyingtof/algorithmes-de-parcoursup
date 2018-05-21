@@ -40,7 +40,7 @@ public class GroupeInternat {
     /* le nombre de places vacantes dans cet internat */
     public int nbPlacesVacantes() {
         /* On seuille à 0,
-        en cas de réduction du nombre de lits conduisnt à une différence négative */
+        en cas de réduction du nombre de lits conduisant à une différence négative */
         return Integer.max(0, capacite - candidatsAffectes.size());
     }
 

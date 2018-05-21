@@ -144,19 +144,17 @@ public class VerificationsResultats {
                 + "veuillez vérifier qu'une diminuation du surbooking "
                 + "a eu lieu pour le groupe de classement "
                 + "C_GP_COD " + formation.id.C_GP_COD
-                + "G_TA_COD " + formation.id.G_TA_COD
-                + "G_TI_COD " + formation.id.G_TI_COD
+                + " G_TA_COD " + formation.id.G_TA_COD
+                + " G_TI_COD " + formation.id.G_TI_COD
         );
         alerterSi(
                 nbPropositions > formation.nbPlacesVacantes()
                 && !formation.estInitialementEnSurcapacite()
                 && (rangDernierNouvelAppele > formation.rangLimite),
-                "surcapacité formation non expliquée par le rang limite,"
-                + "veuillez vérifier qu'une diminuation du surbooking "
-                + "a eu lieu pour le groupe de classement "
+                "surcapacité formation "
                 + "C_GP_COD " + formation.id.C_GP_COD
-                + "G_TA_COD " + formation.id.G_TA_COD
-                + "G_TI_COD " + formation.id.G_TI_COD
+                + " G_TA_COD " + formation.id.G_TA_COD
+                + " G_TI_COD " + formation.id.G_TI_COD
         );
 
         if (nbPropositions < formation.nbPlacesVacantes()) {
