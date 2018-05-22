@@ -81,8 +81,8 @@ public class ConnecteurDonneesPropositionsOracle implements ConnecteurDonneesPro
                 = conn.createStatement().executeQuery(
                         "SELECT g_pr_val FROM g_par WHERE g_pr_cod=31")) {
             result.next();
-            boolean estBloque = result.getBoolean(1);
-            if (!estBloque) {
+            boolean estVerouille = result.getBoolean(1);
+            if (!estVerouille) {
                 throw new RuntimeException(
                         "Veuillez interrompre le flux de données entrantes "
                         + "et positionner le g_pr_cod=31 à 1");

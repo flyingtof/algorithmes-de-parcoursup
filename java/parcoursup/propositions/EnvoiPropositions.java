@@ -43,13 +43,13 @@ public class EnvoiPropositions {
         log("Récupération des données");
         AlgoPropositionsEntree entree = acces.recupererDonnees();
         
-        log("Sauvegarde local de l'entrée");
+        log("Sauvegarde locale de l'entrée");
         entree.serialiser(null);
         
         log("Calcul des propositions");
         AlgoPropositionsSortie sortie = AlgoPropositions.calculePropositions(entree);
 
-        log("Sauvegarde local de la sortie");
+        log("Sauvegarde locale de la sortie");
         sortie.serialiser(null);
         
         log("Export des données");

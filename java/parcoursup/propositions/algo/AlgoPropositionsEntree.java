@@ -141,7 +141,10 @@ public class AlgoPropositionsEntree {
 
     }
 
-    /* permet de logger les calculs */
+    /* Sauvegarde des données au format xml.
+    Si le paramètre filename est null, un nom par défaut est utilisé,
+    paramétré par la date et l'heure.
+    */
     public void serialiser(String filename) throws JAXBException {
         if(filename == null) {
             filename = "entree_" + LocalDateTime.now() + ".xml";

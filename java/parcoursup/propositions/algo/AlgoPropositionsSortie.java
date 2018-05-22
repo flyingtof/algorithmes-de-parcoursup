@@ -44,7 +44,10 @@ public class AlgoPropositionsSortie {
     public final Collection<GroupeInternat> internats
             = new ArrayList<>();
 
-    /* sauvegarde des données */
+    /* Sauvegarde des données au format xml.
+    Si le paramètre filename est null, un nom par défaut est utilisé,
+    paramétré par la date et l'heure.
+    */
     public void serialiser(String filename) throws JAXBException {
         if(filename == null) {
             filename = "sortie_" + LocalDateTime.now() + ".xml";

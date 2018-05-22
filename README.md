@@ -21,14 +21,14 @@ Le dépôt est organisé en plusieurs dossiers:
 
 Calcul de l'ordre d'appel:
 
-    java/parcoursup/ordreappel/calculeOrdreAppel.java		procédure principale (main) utilisée dans Parcoursup
+    java/parcoursup/ordreappel/CalculOrdreAppel.java		procédure principale (main) utilisée dans Parcoursup
     java/parcoursup/ordreappel/algo/				implémentation Java de l'algorithme de calcul de l'ordre d'appel
     java/parcoursup/ordreappel/exemples/			exemples
     java/parcoursup/ordreappel/donnees/				accès aux données (Oracle ou XML)
 
 Calcul des propositions à envoyer:
 
-    java/parcoursup/propositions/envoiPropositions.java    	procédure principale (main) utilisée dans Parcoursup
+    java/parcoursup/propositions/EnvoiPropositions.java    	procédure principale (main) utilisée dans Parcoursup
     java/parcoursup/propositions/algo/				implémentation Java de l'algorithme de calcul des propositions à envoyer
     java/parcoursup/propositions/exemples/			exemples
     java/parcoursup/propositions/donnees/			accès aux donnees (Oracle ou XML)
