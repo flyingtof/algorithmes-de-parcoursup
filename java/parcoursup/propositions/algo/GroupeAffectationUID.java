@@ -47,7 +47,7 @@ public class GroupeAffectationUID {
                     && this.G_TI_COD == ta.G_TI_COD
                     && this.G_TA_COD == ta.G_TA_COD;
         } else {
-            throw new RuntimeException("Test d'égalité anormal");
+            throw new RuntimeException("Test d'égalité imprévu");
         }
     }
 

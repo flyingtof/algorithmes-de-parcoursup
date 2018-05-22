@@ -61,8 +61,8 @@ public class GroupeClassement {
     OrdreAppel calculerOrdreAppel() {
 
 
-        /* on cree autant de listes de voeux que de types de candidats, 
-            triees par ordre de classement */
+        /* on crée autant de listes de voeux que de types de candidats, 
+            triées par ordre de classement */
         Map<VoeuClasse.TypeCandidat, Queue<VoeuClasse>> filesAttente
                 = new HashMap<>();
 
@@ -70,10 +70,10 @@ public class GroupeClassement {
             filesAttente.put(type, new LinkedList<>());
         }
 
-        /* Chaque voeu classe est ventile dans la liste correspondante, 
+        /* Chaque voeu classé est ventilé dans la liste correspondante, 
         en fonction du type du candidat. 
-        Les quatre listes obtenues sont ordonnees par rang de classement, 
-        comme l est la liste voeuxClasses. */
+        Les quatre listes obtenues sont ordonnées par rang de classement, 
+        comme l'est la liste voeuxClasses. */
         int nbBoursiersTotal = 0;
         int nbResidentsTotal = 0;
 

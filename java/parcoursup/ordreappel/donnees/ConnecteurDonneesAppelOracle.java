@@ -237,8 +237,7 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
 
     /* exportation des classements vers la base de donnéees */
     @Override
-    public void exporterDonneesOrdresAppel(AlgoOrdreAppelSortie donnees
-    ) {
+    public void exporterDonneesOrdresAppel(AlgoOrdreAppelSortie donnees) {
 
         try {
 

@@ -65,7 +65,7 @@ public class VoeuUID {
                     && this.G_TA_COD == o.G_TA_COD
                     && this.I_RH_COD == o.I_RH_COD);
         } else {
-            throw new RuntimeException("Test d'égalité anormal");
+            throw new RuntimeException("Test d'égalité imprévu");
         }
     }
 
@@ -78,7 +78,7 @@ public class VoeuUID {
         );
     }
 
-    /* Vérifie que'un identifiant est créé au plus une fois */
+    /* Vérifie qu'un identifiant est créé au plus une fois */
     public static void debuterVerificationUnicite() {
         verificationUnicite = true;
         voeuxCrees.clear();

@@ -80,7 +80,7 @@ public class GroupeInternat {
     void ajouterVoeu(VoeuEnAttente voe, GroupeAffectation groupe) {
         assert voe.avecInternat();
         if (estInitialise) {
-            throw new RuntimeException("Groupe initialise");
+            throw new RuntimeException("Groupe déjà initialisé");
         }
         voeux.add(voe);
         groupesConcernes.add(groupe);

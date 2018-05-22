@@ -42,7 +42,7 @@ public class GroupeInternatUID {
             return this.C_GI_COD == ta.C_GI_COD
                     && this.G_TA_COD == ta.G_TA_COD;
         } else {
-            throw new RuntimeException("Test d'égalité anormal");
+            throw new RuntimeException("Test d'égalité imprévu");
         }
     }
 
