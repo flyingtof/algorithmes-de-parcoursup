@@ -55,7 +55,7 @@ public class AlgoPropositions {
             }
 
             /* Test de surcapacité des internats, avec 
-               mise-à-jour de la position d'admission si nécessaire.
+               mise à jour de la position d'admission si nécessaire.
             
             Baisser la position d'admission d'un internat ne diminue
             pas le nombre de candidats dans les autres internats, voire augmente ces nombres,
@@ -64,20 +64,20 @@ public class AlgoPropositions {
             Par conséquent, on peut mettre à jour toutes les positions d'admission
             de tous les internats sans mettre à jour systématiquement les propositions:
             si un internat est détecté en surcapacité avant la mise
-            à jour des propositions, il l'aurait été également après la mise-à-jour des propositions.
+            à jour des propositions, il l'aurait été également après la mise à jour des propositions.
             (Mais la réciproque est fausse en général).
             
             De cette manière, on reste bien dans l'ensemble E des vecteurs de positions
             d'admission supérieurs sur chaque composante au vecteur de positions d'admission
             le plus permissif possible parmi tous ceux respectant les contraintes
-            de capacité des internats et situés en deça des positions maximales
+            de capacité des internats et situés en deçà des positions maximales
             d'admission.
             
             Ce vecteur est égal, sur chaque composante, à la valeur minimum de cette
-            compsoante parmi les éléments de E.
+            composante parmi les éléments de E.
             
             La boucle termine quand les contraintes de capacité des internats
-            sont satisfaites, c'est à dire quand ce minimum global est atteint.
+            sont satisfaites, c'est-à-dire quand ce minimum global est atteint.
             
             Une propriété de symétrie i.e. d'équité intéressante:
             le résultat ne dépend pas de l'ordre dans lequel on itère sur les internats et
@@ -126,7 +126,7 @@ public class AlgoPropositions {
         count = 0;
         afficherJauge();
 
-        /* precalcul des rangs d'appel maximum dans chaque groupe parmi les nouveaux entrants */
+        /* précalcul des rangs d'appel maximum dans chaque groupe parmi les nouveaux entrants */
         Map<GroupeAffectation, Integer> rangsMaxNouvelArrivant = new HashMap<>();
         for (GroupeAffectation groupe : entree.groupesAffectations) {
             int rangMax = 0;

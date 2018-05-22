@@ -30,7 +30,7 @@ public class VoeuEnAttente {
     @XmlTransient
     public final GroupeAffectation groupe;
 
-    /* rang du voeu dans l ordre d'appel */
+    /* rang du voeu dans l'ordre d'appel */
     public final int ordreAppel;
 
     /* y a t il une demande d'internat sur ce voeu ? */
@@ -43,12 +43,12 @@ public class VoeuEnAttente {
         return internat != null;
     }
 
-    /* le candidat a t'il déjà une offre dans cet internat (pourune autre formation) ?*/
+    /* le candidat a-t'il déjà une offre dans cet internat (pour une autre formation) ?*/
     public final boolean internatDejaObtenu() {
         return internat != null && internat.estAffecte(id.G_CN_COD);
     }
 
-    /* le candidat a t'il déjà une offre dans cette formation (sans internat)? */
+    /* le candidat a-t'il déjà une offre dans cette formation (sans internat)? */
     public final boolean formationDejaObtenue() {
         return groupe != null && groupe.estAffecte(id.G_CN_COD);
     }
@@ -65,7 +65,7 @@ public class VoeuEnAttente {
         return internat == null ? null : internat.id;
     }
 
-    /* resultat du calcul: fait t'on une proposition sur ce voeu? */
+    /* résultat du calcul: fait-on une proposition sur ce voeu? */
     private boolean aProposer = false;
 
     public boolean estAProposer() {
@@ -89,7 +89,7 @@ public class VoeuEnAttente {
     /* vérifie si le voeu est désactivé du fait d'une demande d'internat */
     public boolean estDesactiveParPositionAdmissionInternat() {
         /* si le candidat demande l'internat mais que son classement
-            a l'internat ne passe pas la barre définie par la position
+            à l'internat ne passe pas la barre définie par la position
             d'admission, alors on en fait pas de proposition */
         return ((internat != null)
                 && !internatDejaObtenu()

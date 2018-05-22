@@ -34,7 +34,7 @@ public class OrdreAppel {
     /* calcule une mesure de la différence entre le classement original et l'ordre d'appel: 
     le nombre d'inversions ramené au nombre maximal d'inversions.
     Le nombre maximal d'inversions est obtenu si le classement est totalement inversé
-    (cas hypothétique), auqel cas il y a autant d'inversions que de paires non-ordonnées 
+    (cas hypothétique), auquel cas il y a autant d'inversions que de paires non-ordonnées 
     de candidat c'est-à-dire n * (n - 1) / 2.
      */
     public double coefficientDivergence() {

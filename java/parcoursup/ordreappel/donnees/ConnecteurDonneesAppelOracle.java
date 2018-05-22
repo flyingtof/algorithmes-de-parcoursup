@@ -40,7 +40,7 @@ import parcoursup.ordreappel.algo.VoeuClasse;
 
 public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
 
-    /* connection à la base de données */
+    /* connexion à la base de données */
     Connection conn = null;
 
     public ConnecteurDonneesAppelOracle(String url, String user, String password) throws SQLException {
@@ -56,7 +56,7 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
         }
     }
 
-    /* chargement des classements depuis la base de donnéees */
+    /* chargement des classements depuis la base de données */
     @Override
     public AlgoOrdreAppelEntree recupererDonneesOrdreAppel() throws SQLException {
 
@@ -74,13 +74,13 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
                     = "SELECT DISTINCT "
                     //groupe de classement
                     + "rg.C_GP_COD,"
-                    //flag taux de bousier 0/null = non 1=oui
+                    //flag taux de boursier 0/null = non 1=oui
                     + "NVL(r.A_RC_FLG_TAU_BRS,0),"
                     //taux min de boursier
                     + "NVL(r.A_RC_TAU_BRS_REC,0),"
-                    //flag taux max de non-resident 0/null = non 1=oui
+                    //flag taux max de non-résident 0/null = non 1=oui
                     + "NVL(A_RC_FLG_TAU_NON_RES,0),"
-                    //taux max de non-resident
+                    //taux max de non-résident
                     + "NVL(r.A_RC_TAU_NON_RES_REC, 100)"
                     + " FROM a_rec_grp rg,"
                     + " a_rec r,"
@@ -147,15 +147,15 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
                     + "cg.C_GP_COD, "
                     //id du candidat
                     + "c.G_CN_COD, "
-                    //le rang peut-être nul pourles formations qui ne classent pas
+                    //le rang peut-être nul pour les formations qui ne classent pas
                     + "NVL(C_CG_RAN,0), "
-                    //le candidat a t'il déclaré être boursier? non 0 lycee 1 dusup 2
+                    //le candidat a-t'il déclaré être boursier? non 0 lycée 1 dusup 2
                     + "g_cn_brs, "
-                    //cette déclaration a t'elle été confirmée 
+                    //cette déclaration a-t'elle été confirmée 
                     //via les remontées de base SIECLE (1)
                     //ou directement par le chef d'établissement (2)
                     + "g_cn_flg_brs_cer,"
-                    //le candidat est il du secteur sur les voeux
+                    //le candidat est-il du secteur sur les voeux
                     //passés par ce groupe
                     + "I_IS_FLC_SEC "
                     + " FROM c_can_grp cg, c_grp gp, c_jur_adm ja, g_can c, i_ins i"
@@ -180,7 +180,7 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
 
             try (ResultSet result = stmt.executeQuery(sql)) {
 
-                /* Remarque: le rang est à null / 0 pour celles desformations 
+                /* Remarque: le rang est à null / 0 pour celles des formations 
             non-sélectives qui ne réalisent pas de classement. */
                 while (result.next()) {
 
@@ -235,7 +235,7 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
         }
     }
 
-    /* exportation des classements vers la base de donnéees */
+    /* exportation des classements vers la base de données */
     @Override
     public void exporterDonneesOrdresAppel(AlgoOrdreAppelSortie donnees) {
 
@@ -276,13 +276,13 @@ public class ConnecteurDonneesAppelOracle implements ConnecteurDonneesAppel {
             }
             conn.commit();
 
-            log("Mise-à-jour de la table C_CAN_GRP");
+            log("Mise à jour de la table C_CAN_GRP");
             conn.createStatement().execute("UPDATE "
                     + "(SELECT  a.C_CG_ORD_APP cible, b.C_CG_ORD_APP source FROM C_CAN_GRP a,"
                     + "J_ORD_APPEL_TMP b WHERE a.G_CN_COD=b.G_CN_COD AND a.C_GP_COD=b.C_GP_COD)"
                     + "SET cible=source");
 
-            /* exportation des statistiques mesurant l'ecart entre l'ordre d'appel
+            /* exportation des statistiques mesurant l'écart entre l'ordre d'appel
             et le classement initial. 
              */
             log("Exportation des coefficients de divergence");

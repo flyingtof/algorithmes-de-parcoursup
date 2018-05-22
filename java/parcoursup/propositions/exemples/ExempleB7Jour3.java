@@ -42,7 +42,7 @@ public class ExempleB7Jour3 extends ExemplePropositions {
         AlgoPropositionsSortie sortie
                 = AlgoPropositions.calculePropositions(entree);
 
-        /* C1 à C20 d́eclinent. */
+        /* C1 à C20 déclinent. */
         ExempleB7Base base = new ExempleB7Base();
         for (VoeuEnAttente voe : sortie.propositions) {
             if (voe.id.G_CN_COD <= 20) {

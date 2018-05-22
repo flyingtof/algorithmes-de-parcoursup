@@ -44,7 +44,7 @@ public class ExempleB7Jour2 extends ExemplePropositions {
 
         ExempleB7Base base = new ExempleB7Base();
 
-        /* C21 et C30 d́eclinent. */
+        /* C21 et C30 déclinent. */
         for (VoeuEnAttente voe : sortie.propositions) {
             if (voe.id.G_CN_COD == 21 || voe.id.G_CN_COD == 30) {
                 continue;

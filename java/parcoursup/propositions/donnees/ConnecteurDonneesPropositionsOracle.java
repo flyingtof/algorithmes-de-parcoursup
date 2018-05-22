@@ -55,7 +55,7 @@ import parcoursup.propositions.algo.VoeuUID;
 */
 public class ConnecteurDonneesPropositionsOracle implements ConnecteurDonneesPropositions {
 
-    /* connection a la base de donnees */
+    /* connexion a la base de données */
     Connection conn = null;
 
     public ConnecteurDonneesPropositionsOracle(String url, String user, String password) throws SQLException {
@@ -201,7 +201,7 @@ public class ConnecteurDonneesPropositionsOracle implements ConnecteurDonneesPro
     private final Map<GroupeAffectationUID, GroupeAffectation> groupesAffectations
             = new HashMap<>();
 
-    /* permet de comptabiliser les internats  manquants, avant le début de campagne */
+    /* permet de comptabiliser les internats manquants, avant le début de campagne */
     private final Set<GroupeInternatUID> internatsManquants
             = new HashSet<>();
 
@@ -227,7 +227,7 @@ public class ConnecteurDonneesPropositionsOracle implements ConnecteurDonneesPro
                     int G_TI_COD = result.getInt(2);
                     int G_TA_COD = result.getInt(3);
                     int capacite = result.getInt(4);
-                    int rangLimite = result.getInt(5);/* peut etre null, vaut 0 dans ce cas */
+                    int rangLimite = result.getInt(5);/* peut être null, vaut 0 dans ce cas */
 
                     GroupeAffectationUID id
                             = new GroupeAffectationUID(C_GP_COD, G_TI_COD, G_TA_COD);
@@ -314,7 +314,7 @@ public class ConnecteurDonneesPropositionsOracle implements ConnecteurDonneesPro
                     + "a_voe v,"//voeux
                     + "a_sit_voe sv,"//codes situations des voeux
                     + "a_rec_grp rg,"//groupes de classement pédagogique
-                    + "c_can_grp cg,"//classements pédgogiques
+                    + "c_can_grp cg,"//classements pédagogiques
                     + "a_rec_grp_int rgi,"//groupes de classement internats
                     + "c_can_grp_int cgi,"//classements internats
                     + "g_tri_ins ti"//données formations inscriptions
@@ -435,7 +435,7 @@ public class ConnecteurDonneesPropositionsOracle implements ConnecteurDonneesPro
                     + "a_voe v,"//voeux
                     + "a_sit_voe sv,"//codes situations des voeux
                     + "a_rec_grp rg,"//groupes de classement pédagogique
-                    + "c_can_grp cg,"//classements pédgogiques
+                    + "c_can_grp cg,"//classements pédagogiques
                     + "g_tri_ins ti"//données formations inscriptions
                     + " WHERE "
                     + " cg.i_ip_cod=5" //candidat classé
@@ -449,7 +449,7 @@ public class ConnecteurDonneesPropositionsOracle implements ConnecteurDonneesPro
                     + " AND cg.c_gp_cod=rg.c_gp_cod"
                     + " AND rg.g_ta_cod=v.g_ta_cod"
                     + " AND rg.g_ti_cod=ti.g_ti_cod"
-                    //exclut les formations d'inscriptions avec internat à classemnt propre
+                    //exclut les formations d'inscriptions avec internat à classement propre
                     + " AND (v.i_rh_cod =0 or ti.g_ti_cla_int_uni NOT IN (0,1))";
 
             log(requete);
