@@ -23,7 +23,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-/* Classe comprenant les aractéristiques 
+/* Classe comprenant les caractéristiques 
 identifiant de manière unique un voeu 
 dans la base de données */
 public class VoeuUID {
@@ -31,7 +31,7 @@ public class VoeuUID {
     /*l'identifiant unique du candidat dans la base de données */
     public final int G_CN_COD;
 
-    /*l'identifiant unique de la formation d'affecttaion dans la base de données.
+    /*l'identifiant unique de la formation d'affectation dans la base de données.
         Positionné à -1 pour les internats commun à plusieurs formations.*/
     public final int G_TA_COD;
 
@@ -50,7 +50,7 @@ public class VoeuUID {
         récupérés via deux requêtes distinctes */
         if (verificationUnicite) {
             if (voeuxCrees.contains(this)) {
-                throw new RuntimeException("Deux voeux créés avec le meme id");
+                throw new RuntimeException("Deux voeux créés avec le même id");
             }
             voeuxCrees.add(this);
         }

@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AlgoPropositionsEntree {
 
-    /* La liste des groupes d'affecttaion, contenant leurs voeux respectifs */
+    /* La liste des groupes d'affectation, contenant leurs voeux respectifs */
     public final Collection<GroupeAffectation> groupesAffectations
             = new ArrayList<>();
 
@@ -43,20 +43,20 @@ public class AlgoPropositionsEntree {
     public final Collection<GroupeInternat> internats
             = new ArrayList<>();
 
-    /* verifie l'integrite des donnees d'entree et lève une exception si necessaire.
+    /* vérifie l'intégrité des données d'entrée et lève une exception si nécessaire.
     Propriétés:
         a) tous les voeux sont en attente
         b) pas deux voeux distincts avec la même id
         c) pas deux candidats distincts avec le même classement, formation et internat
-        d) pas le même candidat avec deux classement distincts, formation et internat
-        e) classement positifs
+        d) pas le même candidat avec deux classements distincts, formation et internat
+        e) classements positifs
         f) chaque voeu avec internat se retrouve dans l'internat correspondant
      */
     public void verifierIntegrite() {
 
         for (GroupeAffectation g : groupesAffectations) {
 
-            /* integrite des classements: un classement == un candidat */
+            /* intégrité des classements: un classement == un candidat */
             Map<Integer, Integer> ordreVersCandidat
                     = new HashMap<>();
             Map<Integer, Integer> candidatVersOrdre
@@ -77,7 +77,7 @@ public class AlgoPropositionsEntree {
                 if (ordreVersCandidat.containsKey(v.ordreAppel)) {
                     alerterSi(
                             ordreVersCandidat.get(v.ordreAppel) != v.id.G_CN_COD,
-                            "c) candidats distincst avec le même classement");
+                            "c) candidats distincts avec le même classement");
                 } else {
                     ordreVersCandidat.put(v.ordreAppel, v.id.G_CN_COD);
                 }
@@ -105,7 +105,7 @@ public class AlgoPropositionsEntree {
 
         for (GroupeInternat internat : internats) {
 
-            /* integrite des classements: un classement == un candidat */
+            /* intégrité des classements: un classement == un candidat */
             Map<Integer, Integer> ordreVersCandidat
                     = new HashMap<>();
             Map<Integer, Integer> candidatVersOrdre
@@ -123,7 +123,7 @@ public class AlgoPropositionsEntree {
                 if (ordreVersCandidat.containsKey(v.rangInternat)) {
                     alerterSi(
                             ordreVersCandidat.get(v.rangInternat) != v.id.G_CN_COD,
-                            "c) candidats distincst avec le même classement");
+                            "c) candidats distincts avec le même classement");
                 } else {
                     ordreVersCandidat.put(v.rangInternat, v.id.G_CN_COD);
                 }
@@ -132,7 +132,7 @@ public class AlgoPropositionsEntree {
                     alerterSi(
                             candidatVersOrdre.get(
                                     v.id.G_CN_COD) != (v.rangInternat),
-                            "d) candidats distincst avec le même classement");
+                            "d) candidats distincts avec le même classement");
                 } else {
                     candidatVersOrdre.put(v.id.G_CN_COD, (v.rangInternat));
                 }
@@ -156,7 +156,7 @@ public class AlgoPropositionsEntree {
 
     private void alerterSi(boolean prop, String message) {
         if (prop) {
-            throw new RuntimeException("Donnees d'entree non integres: " + message);
+            throw new RuntimeException("Données d'entrée non intègres: " + message);
         }
     }
 
