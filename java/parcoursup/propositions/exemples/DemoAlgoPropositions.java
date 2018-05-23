@@ -1,5 +1,5 @@
 
-/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr) 
+/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr)
 
     This file is part of Algorithmes-de-parcoursup.
 
@@ -19,19 +19,18 @@
  */
 package parcoursup.propositions.exemples;
 
-import java.sql.SQLException;
 import java.util.Random;
 
 public class DemoAlgoPropositions {
 
-    public static void main(String[] args) throws SQLException, Exception {
+    public static void main(String[] args) throws Exception {
 
         Random random = new Random();
 
         System.out.println("\n********** Exemple Aleatoire ************");
         ExempleAleatoire exempleAleatoire = new ExempleAleatoire(random.nextInt(10000));
         exempleAleatoire.execute();
-        /* peut produire des fichiers de sortie de taille conséquente      
+        /* peut produire des fichiers de sortie de taille conséquente
             exempleAleatoire.executeAndLog();  */
 
         System.out.println("********** Exemple B7, Jour 1 ************");
