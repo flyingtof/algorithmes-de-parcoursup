@@ -64,7 +64,7 @@ public class AlgoPropositions {
             Par conséquent, on peut mettre à jour toutes les positions d'admission
             de tous les internats sans mettre à jour systématiquement les propositions:
             si un internat est détecté en surcapacité avant la mise
-            à jour, il l'aurait été également après la mise-à-jour.
+            à jour des propositions, il l'aurait été également après la mise-à-jour des propositions.
             (Mais la réciproque est fausse en général).
             
             De cette manière, on reste bien dans l'ensemble E des vecteurs de positions
