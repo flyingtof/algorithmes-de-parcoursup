@@ -1,4 +1,4 @@
-/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr) 
+/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr)
 
     This file is part of Algorithmes-de-parcoursup.
 
@@ -18,11 +18,9 @@
  */
 package parcoursup.ordreappel.exemples;
 
-import java.sql.SQLException;
-
 public class DemoOrdreAppel {
 
-    public static void main(String[] args) throws SQLException, Exception {
+    public static void main(String[] args) throws Exception {
 
         ExempleA1 exempleA1 = new ExempleA1();
         exempleA1.execute();

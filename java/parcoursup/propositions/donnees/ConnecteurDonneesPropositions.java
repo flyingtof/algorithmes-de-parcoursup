@@ -1,5 +1,5 @@
 
-/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr) 
+/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr)
 
     This file is part of Algorithmes-de-parcoursup.
 
@@ -25,8 +25,8 @@ import parcoursup.propositions.algo.AlgoPropositionsSortie;
 public interface ConnecteurDonneesPropositions {
 
     /* utilisés pour le cacul des propositions */
-    public AlgoPropositionsEntree recupererDonnees() throws Exception;
+    AlgoPropositionsEntree recupererDonnees() throws Exception;
 
-    public void exporterDonnees(AlgoPropositionsSortie sortie) throws Exception;
+    void exporterDonnees(AlgoPropositionsSortie sortie) throws Exception;
 
 }

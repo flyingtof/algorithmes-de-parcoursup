@@ -1,5 +1,5 @@
 
-/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr) 
+/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr)
 
     This file is part of Algorithmes-de-parcoursup.
 
@@ -25,8 +25,8 @@ import parcoursup.ordreappel.algo.AlgoOrdreAppelSortie;
 public interface ConnecteurDonneesAppel {
 
     /* utilisés pour le calcul de l'ordre d'appel */
-    public AlgoOrdreAppelEntree recupererDonneesOrdreAppel() throws Exception;
+    AlgoOrdreAppelEntree recupererDonneesOrdreAppel() throws Exception;
 
-    public void exporterDonneesOrdresAppel(AlgoOrdreAppelSortie donnees) throws Exception;
+    void exporterDonneesOrdresAppel(AlgoOrdreAppelSortie donnees) throws Exception;
 
 }
