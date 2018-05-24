@@ -26,7 +26,7 @@ import java.util.Set;
 
 public class GroupeAffectation {
 
-    /* le id d'affectation identifiant d emanière unique le groupe dans la base */
+    /* le id d'affectation identifiant de manière unique le groupe dans la base */
     public final GroupeAffectationUID id;
 
     /* la capacité de la formation */
@@ -71,7 +71,7 @@ public class GroupeAffectation {
         });
 
         /* on calcule le nombre de propositions dues au rang limite.
-           Les voeux désactivés pour cause de demande d'internat non satisfiables
+           Les voeux désactivés pour cause de demande d'internat impossible à satisfaire
             ne sont pas pris en compte.
          */
         int dernierCandidatAvecProposition = -1;
@@ -112,7 +112,7 @@ public class GroupeAffectation {
         return capacite - candidatsAffectes.size();
     }
 
-    /* la formation était elle initialement en surcapacite */
+    /* la formation était elle initialement en surcapacité */
     public boolean estInitialementEnSurcapacite() {
         return nbPlacesVacantes() < 0;
     }

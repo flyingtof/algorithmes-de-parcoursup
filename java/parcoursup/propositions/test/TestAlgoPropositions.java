@@ -29,15 +29,15 @@ public class TestAlgoPropositions {
         Random random = new Random();
 
         /*
-        On genere des exemples aleatoires,
-        pour les quels les calculs sont effectués et la procédure de
-        validation des propriéts automatiquement exécutées.
+        On génère des exemples aléatoires,
+        pour lesquels les calculs sont effectués et la procédure de
+        validation des propriétés automatiquement exécutées.
         Si une propriété n'est pas validée, une exception est remontée.
 
         Ces tests ne permettent pas de couvrir tous les exemples possibles.
 
         Une procédure de certification du code est envisagée,
-        afin de prouver la correction du code.
+        afin de prouver la validité du code.
 
         */
 

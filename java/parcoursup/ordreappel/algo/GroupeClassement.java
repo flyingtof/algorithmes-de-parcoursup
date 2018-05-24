@@ -28,8 +28,8 @@ import java.util.Queue;
 
 public class GroupeClassement {
 
-    /*le code identifiant le groupe de classement dans la base de donnees 
-        Remarque: un meme groupe de classement peut etre commun a plusieurs formations
+    /*le code identifiant le groupe de classement dans la base de données 
+        Remarque: un même groupe de classement peut être commun à plusieurs formations
      */
     public final int C_GP_COD;
 
@@ -38,7 +38,7 @@ public class GroupeClassement {
     public final int tauxMinBoursiersPourcents;
 
     /* le taux minimum de résidents dans ce groupe d'appel 
-        (nombre min de residents pour 100 candidats) */
+        (nombre min de résidents pour 100 candidats) */
     public final int tauxMinResidentsPourcents;
 
     /* la liste des voeux du groupe de classement */
@@ -138,7 +138,7 @@ public class GroupeClassement {
                 /* la liste peut être vide dans le cas où les deux contraintes 
                 ne peuvent être satisfaites à la fois. 
                 Dans ce cas nécessairement il y a une contrainte sur chacun des deux taux 
-                (donc au moins un boursier non encore selectionné) 
+                (donc au moins un boursier non encore sélectionné) 
                 et il ne reste plus de boursier résident, 
                 donc il reste au moins un boursier non résident */
                 assert contrainteTauxBoursier && contrainteTauxResident;
@@ -151,7 +151,7 @@ public class GroupeClassement {
                 meilleur = CandidatsBoursierNonResident.peek();
             }
 
-            /* suppression du candidat choisi de sa file d attente */
+            /* suppression du candidat choisi de sa file d'attente */
             Queue<VoeuClasse> queue = filesAttente.get(meilleur.typeCandidat);
             assert meilleur == queue.peek();
             queue.poll();

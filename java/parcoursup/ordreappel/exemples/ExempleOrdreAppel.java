@@ -32,7 +32,7 @@ public abstract class ExempleOrdreAppel {
     /* nom de l'exemple */
     abstract String nom();
 
-    /* cree un groupe de classement avec les données de l'exemple */
+    /* crée un groupe de classement avec les données de l'exemple */
     abstract GroupeClassement initialise();
 
     public void execute() throws JAXBException {

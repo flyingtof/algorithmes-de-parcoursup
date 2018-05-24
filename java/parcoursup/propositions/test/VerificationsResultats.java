@@ -29,7 +29,7 @@ import parcoursup.propositions.algo.VoeuEnAttente;
 /* Permet de vérifier un certain nombre de propriétés statiques
 des sorties de l'algorithme.
 Sans garantir la correction du code,
-cela garantit que les résultats produits satisfont les principales proprotétés
+cela garantit que les résultats produits satisfont les principales propriétés
 énoncées dans le document. 
 Des tests complémentaires sont effectués en base par des scripts PL/SQL.
  */
@@ -87,7 +87,7 @@ public class VerificationsResultats {
     P3 (respect classement internat pour les candidats avec une proposition sans internat)
 
     Si un candidat C1 a un voeu en attente pour une formation F avec demande d'internat I
-    et une proposition acceptés ou en attente de réponse de sa part pour la formation F 
+    et une proposition acceptée ou en attente de réponse de sa part pour la formation F 
     sans demande d'internat,
     et si C2 est un candidat moins bien classé que C1 à l'internat I
     et si une des nouvelles propositions du jour offre l'internat I à C2
@@ -113,7 +113,7 @@ public class VerificationsResultats {
 
     P4  (remplissage maximal des formations dans le respect des positions d'admission à l'internat)
 
-    Le nombre de propositios doit être inférieur au nombre de places vacantes.
+    Le nombre de propositions doit être inférieur au nombre de places vacantes.
     
     Si le nombre de nouvelles propositions dans une formation est strictement inférieur
     au nombre de places vacantes dans cette formation, alors tous les voeux en attente
@@ -140,7 +140,7 @@ public class VerificationsResultats {
                 nbPropositions > formation.nbPlacesVacantes()
                 && (rangDernierNouvelAppele > formation.rangLimite),
                 "surcapacité formation non expliquée par le rang limite,"
-                + "veuillez vérifier qu'une diminuation du surbooking "
+                + "veuillez vérifier qu'une diminution du surbooking "
                 + "a eu lieu pour le groupe de classement "
                 + "C_GP_COD " + formation.id.C_GP_COD
                 + " G_TA_COD " + formation.id.G_TA_COD
@@ -175,7 +175,7 @@ public class VerificationsResultats {
     /*
     P5  (remplissage maximal des internats dans le respect des ordres d'appel)
 
-    Le nombre de propositios doit être inférieur au nombre de places vacantes.
+    Le nombre de propositions doit être inférieur au nombre de places vacantes.
 
     Si le nombre de nouvelles propositions dans un internat I est strictement inférieur
     au nombre de places vacantes dans I, alors tous les voeux en attente
@@ -239,7 +239,7 @@ public class VerificationsResultats {
      */
     private static void alerterSi(boolean prop, String message) {
         if (prop) {
-            throw new RuntimeException("Donnees non integres: " + message);
+            throw new RuntimeException("Données non intègres: " + message);
         }
     }
 

@@ -24,7 +24,7 @@ import parcoursup.propositions.algo.AlgoPropositionsSortie;
 
 public interface ConnecteurDonneesPropositions {
 
-    /* utilisés pour le cacul des propositions */
+    /* utilisés pour le calcul des propositions */
     AlgoPropositionsEntree recupererDonnees() throws Exception;
 
     void exporterDonnees(AlgoPropositionsSortie sortie) throws Exception;

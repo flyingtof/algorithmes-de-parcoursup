@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AlgoPropositionsSortie {
 
-    /* liste des proposiitons à faire */
+    /* liste des propositions à faire */
     public final Collection<VoeuEnAttente> propositions
             = new ArrayList<>();
 

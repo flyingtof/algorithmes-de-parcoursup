@@ -27,7 +27,7 @@ public class GroupeAffectationUID {
     /*l'identifiant unique de la formation d'inscription dans la base de données.*/
     public final int G_TI_COD;
 
-    /*l'identifiant unique de la formation d'affecttaion dans la base de données.*/
+    /*l'identifiant unique de la formation d'affectation dans la base de données.*/
     public final int G_TA_COD;
 
     public GroupeAffectationUID(

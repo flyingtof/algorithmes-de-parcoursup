@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 public class GroupeInternat {
 
-    /* Le triplet identifiant le groupe de classement internat dans la base de donnees
+    /* Le triplet identifiant le groupe de classement internat dans la base de données
      */
     public final GroupeInternatUID id;
 
@@ -44,7 +44,7 @@ public class GroupeInternat {
         return Integer.max(0, capacite - candidatsAffectes.size());
     }
 
-    /* le nombre de demandes d'internats considérées
+    /* le nombre de demandes d'internat considérées
     Bmax dans le document de spécification */
     public int contingentAdmission = 0;
 
@@ -54,16 +54,16 @@ public class GroupeInternat {
     /* la position maximale d'admission dans cet internat, calculée par l'algorithme */
     public int positionMaximaleAdmission = 0;
 
-    /* le nombre de jours depuis l'ouverture de la campagne, 1 le premie rjour */
+    /* le nombre de jours depuis l'ouverture de la campagne, 1 le premier jour */
     public static Integer nbJoursCampagne = null;
 
-    /* la liste des groupes de classement concernes par cet internat */
+    /* la liste des groupes de classement concernés par cet internat */
     @XmlTransient
     public final Set<GroupeAffectation> groupesConcernes
             = new HashSet<>();
 
     /* la liste des voeux du groupe.
-    Apres le calcul de la position initiale d'admission
+    Après le calcul de la position initiale d'admission
     cette liste est triée par ordre de classement internat */
     public final List<VoeuEnAttente> voeux = new LinkedList<>();
 
@@ -144,7 +144,7 @@ public class GroupeInternat {
                 || assietteAdmission > M
                 || contingentAdmission > candidatsEnAttente.size()
                 || contingentAdmission < 0) {
-            throw new RuntimeException("Problème de calcul du contingent d'admisison,"
+            throw new RuntimeException("Problème de calcul du contingent d'admission,"
                     + " veuillez vérifier les données.");
         }
 
@@ -155,7 +155,7 @@ public class GroupeInternat {
             /* tri des voeux par ordre de classement à l'internat */
             voeux.sort((VoeuEnAttente v1, VoeuEnAttente v2) -> v1.rangInternat - v2.rangInternat);
 
-            /* on itere les candidats en attente d'internat jusqu'à arriver
+            /* on itère les candidats en attente d'internat jusqu'à arriver
             au contingent calculé. Remarque: il peut y avoir plusieurs voeux pour
             le même candidat, et les voeux sont triés par rang internat,
             donc les voeux d'un même candidat sont consécutifs */
@@ -202,12 +202,12 @@ public class GroupeInternat {
     public boolean mettreAJourPositionAdmission() {
 
         if (!estInitialise) {
-            throw new RuntimeException("La position doit être initialisée au prélable");
+            throw new RuntimeException("La position doit être initialisée au préalable");
         }
         /* L'initialisation implique que
             la liste des voeux est triée par classement internat */
 
-        /* on compte le nombre de propositions a faire.
+        /* on compte le nombre de propositions à faire.
         En cas de dépassement, on met à jour la position d'admission */
         int comptePlacesProposees = 0;
         int dernierCandidatComptabilise = -1;
@@ -246,8 +246,8 @@ public class GroupeInternat {
         return false;
     }
 
-    /* true si et seulement si la position maximal d'admission a été calculée,
-    ce qui implique que la  liste des voeux est triée par ordre de classement internat.
+    /* true si et seulement si la position maximale d'admission a été calculée,
+    ce qui implique que la liste des voeux est triée par ordre de classement internat.
      */
     private boolean estInitialise = false;
 

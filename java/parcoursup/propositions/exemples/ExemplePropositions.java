@@ -31,7 +31,7 @@ public abstract class ExemplePropositions {
     /* nom de l'exemple */
     abstract String nom();
 
-    /* cree des données d'entrée */
+    /* crée des données d'entrée */
     abstract AlgoPropositionsEntree donneesEntree() throws Exception;
 
     public void execute() throws JAXBException, Exception {

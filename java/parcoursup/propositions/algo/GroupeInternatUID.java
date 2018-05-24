@@ -24,7 +24,7 @@ public class GroupeInternatUID {
     /*l'identifiant unique de l'internat dans la base de données */
     public final int C_GI_COD;
 
-    /*l'identifiant unique de la formation d'affecttaion dans la base de données.
+    /*l'identifiant unique de la formation d'affectation dans la base de données.
         Positionné à 0 pour un internat commun à plusieurs formations.*/
     public final int G_TA_COD;
 

@@ -27,7 +27,7 @@ public class DemoAlgoPropositions {
 
         Random random = new Random();
 
-        System.out.println("\n********** Exemple Aleatoire ************");
+        System.out.println("\n********** Exemple Aléatoire ************");
         ExempleAleatoire exempleAleatoire = new ExempleAleatoire(random.nextInt(10000));
         exempleAleatoire.execute();
         /* peut produire des fichiers de sortie de taille conséquente
