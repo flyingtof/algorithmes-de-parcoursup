@@ -18,10 +18,7 @@
  */
 package parcoursup.propositions.exemples;
 
-import java.io.File;
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import parcoursup.propositions.algo.AlgoPropositions;
 import parcoursup.propositions.algo.AlgoPropositionsEntree;
 import parcoursup.propositions.algo.AlgoPropositionsSortie;
