@@ -1,5 +1,5 @@
 
-/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr) 
+/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr)
 
     This file is part of Algorithmes-de-parcoursup.
 
@@ -19,33 +19,32 @@
  */
 package parcoursup.propositions.test;
 
-import java.sql.SQLException;
 import java.util.Random;
 import parcoursup.propositions.exemples.ExempleAleatoire;
 
 public class TestAlgoPropositions {
 
-    public static void main(String[] args) throws SQLException, Exception {
+    public static void main(String[] args) throws Exception {
 
         Random random = new Random();
 
-        /* 
+        /*
         On génère des exemples aléatoires,
         pour lesquels les calculs sont effectués et la procédure de
         validation des propriétés automatiquement exécutées.
         Si une propriété n'est pas validée, une exception est remontée.
-        
+
         Ces tests ne permettent pas de couvrir tous les exemples possibles.
-        
+
         Une procédure de certification du code est envisagée,
         afin de prouver la validité du code.
-        
+
         */
-        
+
         while (true) {
             ExempleAleatoire exempleAleatoire = new ExempleAleatoire(random.nextInt(1000));
             exempleAleatoire.execute();
-            /* produit des fichiers xml de taille conséquente      
+            /* produit des fichiers xml de taille conséquente
             exemple.executeAndLog();  */
         }
 

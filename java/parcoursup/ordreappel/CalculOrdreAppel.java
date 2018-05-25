@@ -1,5 +1,5 @@
 
-/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr) 
+/* Copyright 2018, 2018 Hugo Gimbert (hugo.gimbert@enseignementsup.gouv.fr)
 
     This file is part of Algorithmes-de-parcoursup.
 
@@ -19,19 +19,18 @@
  */
 package parcoursup.ordreappel;
 
-import java.sql.SQLException;
 import parcoursup.ordreappel.algo.AlgoOrdreAppel;
 import parcoursup.ordreappel.algo.AlgoOrdreAppelEntree;
 import parcoursup.ordreappel.algo.AlgoOrdreAppelSortie;
 import parcoursup.ordreappel.donnees.ConnecteurDonneesAppelOracle;
 
-/* Le calcul des ordres d'appel dans Parcoursup 
+/* Le calcul des ordres d'appel dans Parcoursup
     et leur enregistrement dans la base de données est effectué par le code suivant.
     Ce code est exécuté une fois en début de campagne,  à une date située entre
     la réception des classements et des taux et l'envoi des premières propositions. */
 public class CalculOrdreAppel {
 
-    public static void main(String[] args) throws SQLException, Exception {
+    public static void main(String[] args) throws Exception {
 
         if (args.length < 3) {
             System.out.println("Usage: calculeOrdreAppel serveur login password");
